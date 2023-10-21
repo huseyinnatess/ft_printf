@@ -6,7 +6,7 @@
 /*   By: huates <huates@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 16:01:10 by huates            #+#    #+#             */
-/*   Updated: 2023/10/21 18:29:06 by huates           ###   ########.fr       */
+/*   Updated: 2023/10/22 00:34:00 by huates           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static int ft_format(va_list arg, char flag)
         return (ft_putstr(va_arg(arg, char *)));
     else if (flag == 'p')
         return (ft_pointer(va_arg(arg, unsigned long long)));
+    else if (flag == 'd' || flag == 'i')
+        return (ft_print_number(va_arg(arg, int)));
     return (0);
 }
 
@@ -53,16 +55,15 @@ int ft_printf(const char *str, ...)
 
 int main()
 {
-    int a,b,sonuc;
-    int *ptr;
+    int a;
+    int sonuc;
 
-    a = 32;
-    ptr = &a;
-    sonuc = ft_printf("%p", ptr);
+    a = 2147483655;
+    sonuc = ft_printf("%i", a);
     printf("\n");
     printf("Sonuc:%d", sonuc);
     printf("\n");
-    sonuc = printf("%p", ptr);
+    sonuc = printf("%i", a);
     printf("\n");
     printf("Sonuc:%d", sonuc);
     printf("\n");

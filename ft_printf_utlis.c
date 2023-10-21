@@ -6,7 +6,7 @@
 /*   By: huates <huates@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 16:15:40 by huates            #+#    #+#             */
-/*   Updated: 2023/10/21 18:23:41 by huates           ###   ########.fr       */
+/*   Updated: 2023/10/22 00:35:34 by huates           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,15 @@ int ft_pointer(unsigned long long number)
     rtn += write(1, "0x", 2);    
     rtn += ft_hexadecimal(number, 'x');
     return (rtn);
+}
+
+int ft_print_number(int number)
+{
+   char *str;
+   int rtn;
+     
+   str = ft_itoa(number);
+   rtn = ft_putstr(str);
+   free(str);
+   return (rtn);
 }
