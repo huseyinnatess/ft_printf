@@ -6,59 +6,66 @@
 /*   By: huates <huates@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 16:15:40 by huates            #+#    #+#             */
-/*   Updated: 2023/10/22 00:35:34 by huates           ###   ########.fr       */
+/*   Updated: 2023/10/22 16:49:46 by huates           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdlib.h>
 #include <unistd.h>
 
-int ft_putchar(char c)
+int	ft_putstr(char *str)
 {
-    return(write(1, &c, 1));
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		write(1, &str[i], 1);
+	return (i);
 }
 
-int ft_putstr(char *str)
+int	ft_hexadecimal(unsigned long long number, char c)
 {
-    int i;
+	int	rtn;
 
-    i = -1;
-    while (str[++i])
-        write(1, &str[i], 1);
-    return (i);
+	rtn = 0;
+	if (number >= 16)
+		rtn += ft_hexadecimal(number / 16, c);
+	if (c == 'X')
+		write(1, &"0123456789ABCDEF"[number % 16], 1);
+	if (c == 'x')
+		write(1, &"0123456789abcdef"[number % 16], 1);
+	return (rtn + 1);
 }
 
-int ft_hexadecimal(unsigned long long number, char c)
+int	ft_pointer(unsigned long long number)
 {
-    int rtn;
+	int	rtn;
 
-    rtn = 0;
-    if (number >= 16)
-        rtn += ft_hexadecimal(number / 16, c);
-    if (c == 'X')
-        write(1, &"0123456789ABCDEF"[number % 16], 1);
-    if (c == 'x')
-        write(1, &"0123456789abcdef"[number % 16], 1);
-    return (rtn + 1);
+	rtn = 0;
+	rtn += write(1, "0x", 2);
+	rtn += ft_hexadecimal(number, 'x');
+	return (rtn);
 }
 
-int ft_pointer(unsigned long long number)
+int	ft_print_number(int number)
 {
-    int rtn;
+	char	*str;
+	int		rtn;
 
-    rtn = 0;
-    rtn += write(1, "0x", 2);    
-    rtn += ft_hexadecimal(number, 'x');
-    return (rtn);
+	str = ft_itoa(number);
+	rtn = ft_putstr(str);
+	free(str);
+	return (rtn);
 }
 
-int ft_print_number(int number)
+int	ft_print_unsigned(unsigned int number)
 {
-   char *str;
-   int rtn;
-     
-   str = ft_itoa(number);
-   rtn = ft_putstr(str);
-   free(str);
-   return (rtn);
+	int	rtn;
+
+	rtn = 0;
+	if (number > 9)
+		rtn = ft_print_unsigned(number / 10);
+	ft_putchar((number % 10) + 48);
+	return (rtn + 1);
 }
