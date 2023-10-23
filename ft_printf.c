@@ -6,7 +6,7 @@
 /*   By: huates <huates@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 16:01:10 by huates            #+#    #+#             */
-/*   Updated: 2023/10/22 16:51:06 by huates           ###   ########.fr       */
+/*   Updated: 2023/10/23 17:05:12 by huates           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,20 @@ static int	ft_format(va_list arg, char flag)
 	else if (flag == 's')
 		return (ft_putstr(va_arg(arg, char *)));
 	else if (flag == 'p')
-		return (ft_pointer(va_arg(arg, unsigned long long)));
+		return (ft_pointer(va_arg(arg, unsigned long int), 1));
 	else if (flag == 'd' || flag == 'i')
 		return (ft_print_number(va_arg(arg, int)));
 	else if (flag == 'u')
 		return (ft_print_unsigned(va_arg(arg, unsigned int)));
 	else if (flag == 'x' || flag == 'X')
-		return ((ft_hexadecimal(va_arg(arg, unsigned long long), flag)));
-	else
-		return (ft_putstr("%"));
+		return ((ft_hexadecimal(va_arg(arg, unsigned int), flag)));
+	if (flag == '%')
+	{
+		if (ft_putchar ('%') < 0)
+			return (-1);
+		return (1);
+	}
+	return (-1);
 }
 
 static int	ft_flag_check(const char *str, int i)
@@ -45,26 +50,43 @@ static int	ft_flag_check(const char *str, int i)
 			+ 1] == '%'));
 }
 
-int	ft_printf(const char *str, ...)
+static int ft_check_str(const char *str, int *rtn, va_list arg)
 {
-	va_list	arg;
-	int		i;
-	int		rtn;
+	int format;
+	int i;
 
 	i = -1;
-	rtn = 0;
-	va_start(arg, str);
 	while (str[++i])
 	{
 		if (ft_flag_check(str, i))
-			rtn += ft_format(arg, str[++i]);
+		{
+			format = ft_format(arg, str[++i]);
+			if (format == -1)
+				return (-1);
+			*rtn += format;
+		}
 		else
 		{
 			if (str[i] == '%')
 				return (0);
-			rtn += write(1, &str[i], 1);
+			format = write(1, &str[i], 1);
+			if (format == -1)
+				return (-1);
+			*rtn += format;
 		}
 	}
+	return (0);
+}
+
+int	ft_printf(const char *str, ...)
+{
+	va_list	arg;
+	int		rtn;
+
+	rtn = 0;
+	va_start(arg, str);
+	if (ft_check_str(str, &rtn, arg) < 0)
+		return (-1);
 	va_end(arg);
 	return (rtn);
 }

@@ -1,4 +1,5 @@
-NAME = libft.a
+NAME = libftprintf.a
+INC = 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
@@ -13,7 +14,7 @@ all: $(NAME)
 
 $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) -c $(SRCS)
-	ar -rc $(NAME) $(OBJS)
+	ar -rc $(NAME) $(OBJS) 
 
 clean:
 	$(RM) $(OBJS) $(OBJS_BONUS)
