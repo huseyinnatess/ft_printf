@@ -6,7 +6,7 @@
 /*   By: huates <huates@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 16:15:40 by huates            #+#    #+#             */
-/*   Updated: 2023/10/23 17:05:15 by huates           ###   ########.fr       */
+/*   Updated: 2023/10/24 14:37:37 by huates           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int	ft_putstr(char *str)
 {
 	int	i;
-	
+
 	i = -1;
 	if (!str)
 		return (write(1, "(null)", 6));
@@ -32,7 +32,7 @@ int	ft_putstr(char *str)
 int	ft_hexadecimal(unsigned int number, char c)
 {
 	int	rtn;
-	int tmp;
+	int	tmp;
 
 	rtn = 0;
 	if (number >= 16)
@@ -47,14 +47,14 @@ int	ft_hexadecimal(unsigned int number, char c)
 	if (c == 'x')
 		tmp = write(1, &"0123456789abcdef"[number % 16], 1);
 	if (tmp < 0)
-			return (-1);
+		return (-1);
 	return (rtn + 1);
 }
 
 int	ft_pointer(unsigned long int number, int check)
 {
 	int	rtn;
-	int tmp;
+	int	tmp;
 
 	rtn = 0;
 	if (check)
@@ -71,7 +71,7 @@ int	ft_pointer(unsigned long int number, int check)
 	}
 	tmp = write(1, &"0123456789abcdef"[number % 16], 1);
 	if (tmp < 0)
-			return (-1);
+		return (-1);
 	return (rtn + 1);
 }
 

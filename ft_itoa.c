@@ -6,7 +6,7 @@
 /*   By: huates <huates@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 23:24:49 by huates            #+#    #+#             */
-/*   Updated: 2023/10/23 17:41:37 by huates           ###   ########.fr       */
+/*   Updated: 2023/10/24 14:16:25 by huates           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static int	ft_count(long int num)
 {
 	long int	n;
-	int	i;
+	int			i;
 
 	i = 0;
 	n = num;

@@ -6,7 +6,7 @@
 /*   By: huates <huates@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 16:01:10 by huates            #+#    #+#             */
-/*   Updated: 2023/10/23 17:05:12 by huates           ###   ########.fr       */
+/*   Updated: 2023/10/24 14:38:08 by huates           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-int	ft_putchar(char c)
+static int	ft_putchar(char c)
 {
 	return (write(1, &c, 1));
 }
@@ -35,7 +35,7 @@ static int	ft_format(va_list arg, char flag)
 		return ((ft_hexadecimal(va_arg(arg, unsigned int), flag)));
 	if (flag == '%')
 	{
-		if (ft_putchar ('%') < 0)
+		if (ft_putchar('%') < 0)
 			return (-1);
 		return (1);
 	}
@@ -45,15 +45,15 @@ static int	ft_format(va_list arg, char flag)
 static int	ft_flag_check(const char *str, int i)
 {
 	return (str[i] == '%' && (str[i + 1] == 'c' || str[i + 1] == 'd' || str[i
-			+ 1] == 'i' || str[i + 1] == 'u' || str[i + 1] == 'x' || str[i
-			+ 1] == 'X' || str[i + 1] == 'p' || str[i + 1] == 's' || str[i
-			+ 1] == '%'));
+				+ 1] == 'i' || str[i + 1] == 'u' || str[i + 1] == 'x' || str[i
+				+ 1] == 'X' || str[i + 1] == 'p' || str[i + 1] == 's' || str[i
+				+ 1] == '%'));
 }
 
-static int ft_check_str(const char *str, int *rtn, va_list arg)
+static int	ft_check_str(const char *str, int *rtn, va_list arg)
 {
-	int format;
-	int i;
+	int	format;
+	int	i;
 
 	i = -1;
 	while (str[++i])
