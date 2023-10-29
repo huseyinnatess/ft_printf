@@ -37,6 +37,7 @@ Makefile, 'libftprintf.a' adında bir kütüphane oluşturur. Aşağıdaki kural
 * `make fclean`
 * `make re`
 
+
 ## Variadic Argümanlar (va_list)
 
 -   Bir fonksiyonun sınırsız argüman alabilmesi için kullanılır.
@@ -48,6 +49,7 @@ Makefile, 'libftprintf.a' adında bir kütüphane oluşturur. Aşağıdaki kural
 -   va_arg, ilk parametre olarak işlem yapılacak va_list'i aliyor. Va_arg her çağrıldığında bir sonraki indeks'i (argümanı) alır. Örneğin argümanlarin 22,33,44 olduğunu düşünelim. var_arg ilk cağrıldığında 22, ikinci çağrıldığında 33'ü çeker. İkinci aldığı parametre ise içeriden alınacak olan değerin hangi veri tipinde alınacağina karar verir.
     
 -   va_end ile argüman kullanımını sonlandırıp, temizlik işlemini yaparız. Fakat daha sonra argümanlara ihtiyacımız olursa, tekrar start verebiliriz.
+
 
 ## Neden Format Değişkenini Kullanmak Zorundayız?
 
