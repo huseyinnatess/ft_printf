@@ -40,7 +40,7 @@ Makefile, 'libftprintf.a' adında bir kütüphane oluşturur. Aşağıdaki kural
 ## Neden Format Değişkenini Kullanmak Zorundayız?
 
 ```c
-Önemli: Önce projeyi inceleyip ardında burayı okumanı tavsiye ederim.
+Önemli: Önce projeyi inceleyip ardından burayı okumanı tavsiye ederim.
 ```
 
 Şöyle açıklayayım olayı. Örneğin
