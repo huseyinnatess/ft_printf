@@ -4,7 +4,6 @@
   <img src="https://github.com/mcombeau/mcombeau/blob/main/42_badges/ft_printfe.png" alt="ft_printf 42 project badge"/>
 </p>
 
-# ft_printf
 #### *Çünkü ft_putnbr() and ft_putstr() yeterli değil*
 
 [![forthebadge](https://forthebadge.com/images/badges/no-ragrets.svg)](https://forthebadge.com)
