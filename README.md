@@ -37,14 +37,19 @@ Makefile, 'libftprintf.a' adında bir kütüphane oluşturur. Aşağıdaki kural
 * `make fclean`
 * `make re`
 
-## Tests
+## Neden Format Değişkenini Kullanmak Zorundayız?
 
-### [printfTester](https://github.com/Tripouille/printfTester)
-![tripouille results](./img/tripouille.png)
+Önemli: Önce projeyi inceleyip ardında burayı okumanı tavsiye ederim.
 
-### [francinette](https://github.com/xicodomingues/francinette/blob/master/testers/printf)
-![francinette results](./img/francinette.png)
+Şöyle açıklayayım olayı. Örneğin
+```c
+ft_printf("%d, %c", 572, 'A');
+```
+bu şekilde fonksiyonunuzu çalıştırdınız. Fonksiyonunuz 4 sayısını return edecek çünkü 4 karakter yazdırdık. Format değişkenini kullanmadan direk rtn değişkeninde yazılan karakter sayısını tuttuğumuzu düşünelim. Ortaya şöyle bir senaryo çıkacatır. 
 
-### [francinette --strict](https://github.com/xicodomingues/francinette/blob/master/testers/printf)
-![francinette --strict results](./img/francinette_strict.png)
+Diyelim ki printf fonksiyonumuz 572 sayısını başarılı şekilde yazdı. rtn değerimiz 3 oldu ama 'A' karakterini yazdırırken hata olduğunu ve -1 döndüğünü düşünelim rtn değerimiz 3'tü 'A' karakterinde yazdırma esnasında hata olduğu için -1 döndü. rtn bu durumda 3 + (-1) = 2 oldu. Ancak hata durumunda bizim -1 döndürmemiz gerekiyordu. rtn'de önceden sayı var olduğu için onunla toplanmış oldu.
+
+Bu yüzden sonucu önce geçici bir değişkende (format) tutup -1 gelip gelmediğini kontrol etmeliyiz. -1 gelmedi ise rtn'ye eklemeliyiz.
+
+Umarım açıklayıcı olmuştur bunun haricinde takılacağınızı düşündüğüm her yere yorum satırları ile açıklama yaptım. Kolay gelsin.
 
