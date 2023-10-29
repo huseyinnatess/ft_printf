@@ -18,15 +18,15 @@ int ft_printf(const char *str, ...);
 
 | Format | Output |
 | :-------: | ---- |
-| `%c` | Tek bir karakter |
-| `%s` | String  |
-| `%p` | Hexadecimal formatta basılmış bir pointer |
-| `%d` | Decimal sayı |
-| `%i` | İnteger sayı |
-| `%u` | Unsigned sayılar |
-| `%x` | Hexadecimal tabanda küçük harflerle bir sayı |
-| `%X` | Hexadecimal tabanda büyük harflerle bir sayı |
-| `%%` | Tek '%' karakteri |
+| `%c` | Tek bir karakter yazdırır |
+| `%s` | String yazdırır |
+| `%p` | Hexadecimal formatta basılmış bir pointer yazdırır |
+| `%d` | Decimal sayı yazdırır |
+| `%i` | İnteger sayı yazdırır |
+| `%u` | Unsigned sayılar yazdırır |
+| `%x` | Hexadecimal tabanda küçük harflerle bir sayı yazdırır |
+| `%X` | Hexadecimal tabanda büyük harflerle bir sayı yazdırır |
+| `%%` | Tek '%' karakteri yazdırır |
 
 ## Makefile Kuralları
 
