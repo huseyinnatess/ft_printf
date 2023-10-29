@@ -6,7 +6,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/no-ragrets.svg)](https://forthebadge.com)
 </div>
 
-[42 Okulunun](https://42.fr/en/homepage/) 'printf()" projesi, Hedef, çeşitli format belirleyicilerini (c, s, p, d, i, u, x, X ve % gibi) ele alabilen printf işlevinin basitleştirilmiş bir sürümünü yeniden oluşturmaktır.
+[42 Okulunun](https://42.fr/en/homepage/) 'printf()' projesi, Hedef, çeşitli format belirleyicilerini (c, s, p, d, i, u, x, X ve % gibi) ele alabilen printf işlevinin basitleştirilmiş bir sürümünü yeniden oluşturmaktır.
 
 ## Prototip
 
